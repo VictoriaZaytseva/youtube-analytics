@@ -7,7 +7,7 @@ from datetime import date
 load_dotenv(dotenv_path=".env")
 
 API_KEY = os.getenv("API_KEY")
-CHANNEL_HANDLE = "MrBeast"
+CHANNEL_HANDLE = os.getenv("CHANNEL_HANDLE")
 max_results = 50
 def get_playlist_id():
     try:
@@ -52,7 +52,6 @@ def get_video_ids(playlist_id):
     
     except requests.exceptions.RequestException as e:
         raise e    
-#https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&part=snippet&part=statistics&key=[YOUR_API_KEY]
 
 def extract_video_data(video_ids):
     extracted_data = []
