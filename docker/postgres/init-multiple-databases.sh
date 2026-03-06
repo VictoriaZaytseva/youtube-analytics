@@ -20,6 +20,6 @@ create_user_and_database $METADATA_DATABASE_NAME $METADATA_DATABASE_USERNAME $ME
 
 create_user_and_database $CELERY_BACKEND_NAME $CELERY_BACKEND_USERNAME $CELERY_BACKEND_PASSWORD
 
-create_user_and_database $ETL_DATABASE_NAME $ETL_DATABASE_USERNAME $ETL_DATABASE_PASSWORD
+create_user_and_database $ELT_DATABASE_NAME $ELT_DATABASE_USERNAME $ELT_DATABASE_PASSWORD
 
 echo "All databases and users created successfully."
