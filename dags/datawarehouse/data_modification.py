@@ -52,7 +52,7 @@ def update_rows(cur, conn, schema, row):
                 "Video_Views" = %({video_views})s,
                 "Likes_Count" = %({like_count})s,
                 "Comment_Count" = %({comment_count})s
-            WHERE "Video_ID" = %(video_id)s AND "Upload_Date" = %(upload_date)s
+            WHERE "Video_ID" = %({video_id})s AND "Upload_Date" = %({upload_date})s
             """, row)
         conn.commit()
 

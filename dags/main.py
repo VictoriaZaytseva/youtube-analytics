@@ -1,4 +1,5 @@
 from airflow import DAG
+from dataquality.soda import yt_elt_data_quality
 from datawarehouse.dwh import core_table, staging_table
 import pendulum
 from datetime import datetime, timedelta
@@ -46,3 +47,16 @@ with DAG(
     update_core = core_table()
 
     update_staging >> update_core
+
+
+with DAG(
+    dag_id = "data_quality",
+    default_args=default_args,
+    description="Dag to check data quality of staging and core tables using Soda",
+    schedule= "0 16 * * *",
+    catchup=False,
+) as dag:
+    soda_validate_staging = yt_elt_data_quality("staging")
+    soda_validate_core = yt_elt_data_quality("core")
+
+    soda_validate_staging >> soda_validate_core
