@@ -1,5 +1,4 @@
 import logging
-from airflow.decorators import task
 from airflow.operators.bash_operator import BashOperator
 
 logger = logging.getLogger(__name__)
@@ -7,7 +6,6 @@ logger = logging.getLogger(__name__)
 SODA_PATH = "/opt/airflow/include/soda"
 DATASOURCE = "pg_datasource"
 
-@task
 def yt_elt_data_quality(schema):
     try:
         task = BashOperator(
